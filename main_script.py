@@ -27,14 +27,19 @@ def load_settings():
     with open("settings.json", "r")as f:
         try:
             return json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
+        except json.JSONDecodeError:
             return {}
     
 def get_settings():
     # clicker settings
     while True:
         try:
-            w_time = int(input("Enter delay of autoclicker (whole number): ").strip())
+            w_time = float(input("Enter delay of autoclicker: ").strip())
+
+            if w_time < 0:
+                print("Delay cannot be negative, retry.")
+                continue
+                
         except ValueError:
             print("Invalid input, retry.")
             continue
@@ -46,6 +51,11 @@ def get_settings():
         else:
             try:
                 tot_click = int(raw_total_clicks)
+
+                if tot_click <= 0:
+                    print("Total clicks cannot be negative or 0, retry.")
+                    continue
+
             except ValueError:
                 print("Please enter valid input, a positive number/'inf'")   
                 continue
@@ -82,6 +92,7 @@ while True:
 
 print("Start autoclicker? (y/n)")
 start_yes_no  = input().strip().lower()
+
 # main loop
 if start_yes_no in ['y', 'yes']:
     print("Autoclicker will start in 3 seconds")
@@ -94,7 +105,7 @@ if start_yes_no in ['y', 'yes']:
         autoclick_mode = "Infinite"
         while True:
             click(wait_time, autoclick_mode)
-            for _ in range(wait_time * 10):
+            for _ in range(int(wait_time * 10)):
                 if keyboard.is_pressed('q'):
                     cancelled = True
                     break
@@ -105,7 +116,7 @@ if start_yes_no in ['y', 'yes']:
         autoclick_mode = "Fixed"
         for i in range(total_clicks):
             click(wait_time, autoclick_mode) # call function
-            for _ in range(wait_time * 10):
+            for _ in range(int(wait_time * 10)):
                 
                 if keyboard.is_pressed('q'):
                     cancelled = True
