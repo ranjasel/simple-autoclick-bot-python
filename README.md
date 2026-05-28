@@ -1,55 +1,96 @@
 # Python Autoclicker
 
-A simple command-line autoclicker built in Python using `pyautogui`.
+A simple CLI-based autoclicker tool built in Python using `pyautogui`.
+It supports configurable delay, fixed/infinite clicking, saved settings, and a stop key.
 
-## Features
+---
 
-* Adjustable click delay
+## 🚀 Features
+
+* Adjustable click delay (in seconds)
 * Infinite or fixed click modes
-* Live click counter and status display
-* Simple CLI interface
+* Live click counter with status display
+* Save and load previous settings (JSON)
+* Press **`q` anytime to stop the autoclicker**
+* Simple command-line interface
 
-## Requirements
+---
+
+## 📦 Requirements
 
 * Python 3.x
 * pyautogui
+* keyboard
 
-Install dependency:
+### Install dependencies:
 
+```bash
+pip install pyautogui keyboard
 ```
-pip install pyautogui
-```
 
-## How to Run
+---
 
-```
+## ▶️ How to Run
+
+```bash
 python autoclicker.py
 ```
 
-## Usage
+---
 
-1. Enter delay between clicks (in seconds)
-2. Choose:
+## ⚙️ How It Works
 
-   * `inf` for infinite clicks
-   * any number for fixed clicks
-3. Confirm start
-4. Autoclicker will begin after a short delay
+1. Enter delay between clicks
+2. Choose click mode:
 
-## Example Output
+   * `inf` → infinite clicks
+   * number → fixed number of clicks
+3. Choose whether to reuse saved settings
+4. Confirm start
+5. Autoclicker begins after a short delay
+
+---
+
+## ⛔ Stop Feature
+
+* Press **`q`** anytime during execution to stop the autoclicker safely
+
+---
+
+## 💾 Settings
+
+The program saves your settings in:
+
+```
+settings.json
+```
+
+This includes:
+
+* wait time
+* total clicks
+
+---
+
+## 📌 Example Output
 
 ```
 Click - 1 | Delay - 1 second(s) | Mode - Infinite
+Click - 2 | Delay - 1 second(s) | Mode - Infinite
 ```
 
-## Notes
+---
 
-* This tool controls your mouse automatically
-* Be cautious while running it
-* Test with small delays first
+## ⚠️ Warning
 
-## Future Improvements
+This tool controls your mouse automatically.
+Use carefully and avoid running it on important tasks.
 
-* Add stop key (e.g. press 'q' to stop)
-* Support decimal delays (0.5s)
-* Add hotkey start/stop
+---
+
+## 🔮 Future Improvements
+
+* GUI version (Tkinter)
+* Hotkey start/stop toggle
+* Decimal delay support (e.g. 0.5s)
+* Better settings menu system
