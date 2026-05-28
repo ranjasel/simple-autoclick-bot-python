@@ -92,5 +92,4 @@ Use carefully and avoid running it on important tasks.
 
 * GUI version (Tkinter)
 * Hotkey start/stop toggle
-* Decimal delay support (e.g. 0.5s)
 * Better settings menu system
